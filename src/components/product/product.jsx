@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
-export default function Product() {
+ function Product() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [sortType, setSortType] = useState("");
@@ -10,7 +9,7 @@ export default function Product() {
   useEffect(() => {
     axios.get("https://dummyjson.com/products?limit=194")
       .then((res) => setProducts(res.data.products))
-      .catch((err) => console.error("Error fetching data:", err));
+      .catch((err) => console.error("Error:", err));
   }, []);
 
   const filteredProducts = products.filter((product) =>
@@ -40,7 +39,7 @@ export default function Product() {
       <select onChange={(e) => setSortType(e.target.value)}>
         <option value="">Saralash</option>
       
-        <option value="price-asc">Narx  : (Eng arzon)</option>
+        <option value="price-asc">Narx: (Eng arzon)</option>
         <option value="price-desc">Narx : (Eng qimmat)</option>
         <option value="name-asc">Nomi:(A-Z)</option>
         <option value="name-desc">Nomi:(Z-A)</option>
@@ -73,3 +72,4 @@ export default function Product() {
 
 
 
+export default Product  ;
